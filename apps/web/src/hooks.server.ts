@@ -7,7 +7,7 @@ import {
 import { dev } from '$app/environment';
 import { createSupabaseServerClient } from '@supabase/auth-helpers-sveltekit';
 import { redirect, type Handle, type HandleServerError } from '@sveltejs/kit';
-import { SIGN_IN_PATH } from '$lib/const';
+import { DEFAULT_LANG, SIGN_IN_PATH } from '$lib/const';
 
 if (!dev && PUBLIC_SENTRY_DSN) {
 	SentryNode.init({
@@ -53,6 +53,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 	}
 
 	return resolve(event, {
+		transformPageChunk(input) {
+			return input.html.replace('%lang%', DEFAULT_LANG);
+		},
 		/**
 		 * There´s an issue with `filterSerializedResponseHeaders` not working when using `sequence`
 		 *
