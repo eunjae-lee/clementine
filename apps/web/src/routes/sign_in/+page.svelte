@@ -4,7 +4,7 @@
 	import type { PageData } from './$types';
 	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
 	import Logo from '$lib/components/Logo.svelte';
-	import { APP_NAME } from '$lib/const';
+	import { APP_NAME, REDIRECT_SIGNED_IN_USER_TO, SIGN_UP_PATH } from '$lib/const';
 
 	export let data: PageData;
 
@@ -27,7 +27,7 @@
 			status = 'confirming';
 		}
 		if (!error) {
-			goto('/decks');
+			goto(REDIRECT_SIGNED_IN_USER_TO);
 		}
 	}
 </script>
@@ -66,7 +66,7 @@
 					disabled={status !== 'init'}>Sign In</button
 				>
 				<div class="flex justify-center">
-					<a href="/sign_up">(If you haven't signed up yet)</a>
+					<a href={SIGN_UP_PATH}>(If you haven't signed up yet)</a>
 				</div>
 			</form>
 

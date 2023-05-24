@@ -3,6 +3,7 @@
 	import type { PageData } from './$types';
 	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
 	import Logo from '$lib/components/Logo.svelte';
+	import { SIGN_IN_PATH } from '$lib/const';
 
 	export let data: PageData;
 
@@ -60,7 +61,7 @@
 					disabled={status !== 'init'}>Sign Up</button
 				>
 				<div class="flex justify-center">
-					<a href="/sign_in">(If you've signed up)</a>
+					<a href={SIGN_IN_PATH}>(If you've signed up)</a>
 				</div>
 			</form>
 
