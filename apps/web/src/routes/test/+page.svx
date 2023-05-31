@@ -1,0 +1,15 @@
+<script lang="ts">
+  let count = 0;
+
+  function increase() {
+    count += 1;
+  }
+</script>
+
+# This is a test page
+
+This is written with mdsvex.
+
+<button on:click={increase}>click me</button>
+
+counter: {count}
