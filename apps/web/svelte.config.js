@@ -6,7 +6,7 @@ import relativeImages from 'mdsvex-relative-images';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	extensions: ['.svelte', '.svx'],
+	extensions: ['.svelte', '.svx', '.md'],
 
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
@@ -16,6 +16,7 @@ const config = {
 			postcss: true,
 		}),
 		mdsvex({
+			extensions: ['.md'],
 			remarkPlugins: [relativeImages],
 		}),
 	],

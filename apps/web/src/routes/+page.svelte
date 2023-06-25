@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
-	import { MetaTags } from 'svelte-meta-tags';
+	import { MetaTags, type MetaTagsProps } from 'svelte-meta-tags';
 	import type { PageData } from './$types';
 	import { Globe, Twitter, Youtube } from 'lucide-svelte';
 	import { onMount } from 'svelte';
@@ -18,9 +18,34 @@
 			redirect(303, REDIRECT_SIGNED_IN_USER_TO);
 		}
 	});
+
+	let metaTags: MetaTagsProps = {
+		title: APP_NAME,
+		description: APP_DESCRIPTION,
+		openGraph: {
+			// url: 'https://',
+			title: APP_NAME,
+			description: APP_DESCRIPTION,
+			// images: [
+			// 	{
+			// 		url: 'https://',
+			// 	},
+			// ],
+			site_name: APP_NAME,
+		},
+		twitter: {
+			// handle: '@eunjae_lee',
+			// site: '@learnwitheunjae',
+			cardType: 'summary', //'summary_large_image'
+			title: APP_NAME,
+			description: APP_DESCRIPTION,
+			// image: 'https://',
+			imageAlt: APP_NAME,
+		},
+	};
 </script>
 
-<MetaTags title={APP_NAME} description={APP_DESCRIPTION} />
+<MetaTags {...metaTags} />
 
 <AppShell>
 	<svelte:fragment slot="header">
