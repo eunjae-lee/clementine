@@ -1,5 +1,3 @@
-import type { SvelteComponent } from 'svelte';
-
 type GetContentsParams = {
 	slugStartsWith?: string;
 };
@@ -53,9 +51,12 @@ export const getContents = async <Metadata = unknown>({
 
 export const getContent = async <Metadata = unknown>(slug: string) => {
 	const filePath = getFilePathFromSlug(slug);
-	const contentMap = getContentMap<Metadata>();
-	const resolver = contentMap[filePath];
-	const resolved = await resolver();
+	const mod = await import(filePath);
 
-	return { filePath, slug, metadata: resolved.metadata, component: resolved.default };
+	return {
+		filePath,
+		slug,
+		metadata: mod.metadata as Metadata,
+		component: mod.default as ConstructorOfATypedSvelteComponent,
+	};
 };

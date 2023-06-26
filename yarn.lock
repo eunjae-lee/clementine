@@ -423,10 +423,10 @@
     fflate "^0.7.3"
     string.prototype.codepointat "^0.2.1"
 
-"@skeletonlabs/skeleton@1.6.2":
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/@skeletonlabs/skeleton/-/skeleton-1.6.2.tgz#437a86acc78f4f9012769464a4c06179bc43adb6"
-  integrity sha512-Xp+gCAgxEfzwa6lUzeFHhIiTzPe7wKAWZJzo0UnNJfgMCuJy4Txu2bDXz6ZCyu9+B6+i8lShFPxPuENqTfP14w==
+"@skeletonlabs/skeleton@1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@skeletonlabs/skeleton/-/skeleton-1.8.0.tgz#1842df76272c24903977fa018b3067c7476c6e1a"
+  integrity sha512-dO4ukU34MGUY1yA1Gln+YUFEEew25AHm6GMpbzCOX8p8b9NmVBWiSuF3me9jnbrV15TGJxmUGzdiRN/70b4KIg==
   dependencies:
     esm-env "1.0.0"
     svelte "3.58.0"
