@@ -16,15 +16,13 @@ const getContentMap = <Metadata = unknown>() => {
 	);
 };
 
+function filterNonNull<T>(arr: (T | null | undefined)[]): T[] {
+	return arr.filter((item): item is T => item !== null && item !== undefined);
+}
+
 export const getContents = async <Metadata = unknown>({
 	slugStartsWith,
 }: GetContentsParams = {}) => {
-	type Content = {
-		filePath: string;
-		slug: string;
-		metadata: Metadata;
-	};
-
 	const contents = await Promise.all(
 		Object.entries(getContentMap<Metadata>()).map(async (entry) => {
 			const [filePath, resolver] = entry;
@@ -42,11 +40,7 @@ export const getContents = async <Metadata = unknown>({
 		})
 	);
 
-	const isContent = (content: unknown): content is Content => {
-		return content !== null;
-	};
-
-	return contents.filter(isContent);
+	return filterNonNull(contents);
 };
 
 export const getContent = async <Metadata = unknown>(slug: string) => {

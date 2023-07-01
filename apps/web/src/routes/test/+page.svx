@@ -10,6 +10,6 @@
 
 This is written with mdsvex.
 
-<button on:click={increase}>click me</button>
+<button type="button" class="btn variant-filled-primary" on:click={increase}>click me</button>
 
 counter: {count}

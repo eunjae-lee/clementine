@@ -16,7 +16,7 @@ const config = {
 			postcss: true,
 		}),
 		mdsvex({
-			extensions: ['.md'],
+			extensions: ['.svx', '.md'],
 			remarkPlugins: [relativeImages],
 		}),
 	],
