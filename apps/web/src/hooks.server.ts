@@ -7,7 +7,7 @@ import {
 import { dev } from '$app/environment';
 import { createSupabaseServerClient } from '@supabase/auth-helpers-sveltekit';
 import { redirect, type Handle, type HandleServerError } from '@sveltejs/kit';
-import { DEFAULT_LANG, SIGN_IN_PATH } from '$lib/const';
+import { DEFAULT_LANG, SIGN_IN_PATH, isProtectedRoute } from '$lib/config';
 import { sequence } from '@sveltejs/kit/hooks';
 
 if (!dev && PUBLIC_SENTRY_DSN) {
@@ -20,10 +20,6 @@ if (!dev && PUBLIC_SENTRY_DSN) {
 
 	SentryNode.setTag('svelteKit', 'server');
 }
-
-const isProtectedRoute = (url: URL) => {
-	return url.pathname.startsWith('/super-secret-path');
-};
 
 const handleSupabase: Handle = async ({ event, resolve }) => {
 	event.locals.supabase = createSupabaseServerClient({
@@ -61,9 +57,8 @@ const handleProtectedRoute: Handle = async ({ event, resolve }) => {
 
 const handleLanguage: Handle = async ({ event, resolve }) => {
 	return resolve(event, {
-		transformPageChunk(input) {
-			console.log('💡 transformPageChunk');
-			return input.html.replace('%lang%', event.cookies.get('lang') || DEFAULT_LANG);
+		transformPageChunk({ html }) {
+			return html.replace('%lang%', event.cookies.get('lang') || DEFAULT_LANG);
 		},
 	});
 };

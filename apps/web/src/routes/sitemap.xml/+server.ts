@@ -1,4 +1,4 @@
-import { BASE_URL, POST_URL_PREFIX } from '$lib/const';
+import { BASE_URL, POST_URL_PREFIX } from '$lib/config';
 import { getContents } from '$lib/content';
 
 export async function GET() {

@@ -4,7 +4,7 @@
 	import type { PageData } from './$types';
 	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
 	import Logo from '$lib/components/Logo.svelte';
-	import { APP_NAME, REDIRECT_SIGNED_IN_USER_TO, SIGN_UP_PATH } from '$lib/const';
+	import { APP_NAME, REDIRECT_SIGNED_IN_USER_TO, SIGN_UP_PATH } from '$lib/config';
 
 	export let data: PageData;
 

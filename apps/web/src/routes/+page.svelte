@@ -7,7 +7,7 @@
 	import { page } from '$app/stores';
 	import { redirect } from '@sveltejs/kit';
 	import Logo from '$lib/components/Logo.svelte';
-	import { APP_DESCRIPTION, APP_NAME, REDIRECT_SIGNED_IN_USER_TO, SIGN_IN_PATH } from '$lib/const';
+	import { APP_DESCRIPTION, APP_NAME, REDIRECT_SIGNED_IN_USER_TO, SIGN_IN_PATH } from '$lib/config';
 
 	export let data: PageData;
 

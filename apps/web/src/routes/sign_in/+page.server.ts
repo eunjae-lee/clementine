@@ -1,4 +1,4 @@
-import { REDIRECT_SIGNED_IN_USER_TO } from '$lib/const';
+import { REDIRECT_SIGNED_IN_USER_TO } from '$lib/config';
 import type { PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 

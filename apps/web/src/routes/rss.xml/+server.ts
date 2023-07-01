@@ -1,4 +1,4 @@
-import { APP_DESCRIPTION, APP_NAME, BASE_URL, POST_URL_PREFIX } from '$lib/const.js';
+import { APP_DESCRIPTION, APP_NAME, BASE_URL, POST_URL_PREFIX } from '$lib/config.js';
 import { getContents } from '$lib/content/index.js';
 
 /**

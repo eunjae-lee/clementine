@@ -1,4 +1,4 @@
-import { DEFAULT_LANG } from '$lib/const';
+import { DEFAULT_LANG } from '$lib/config';
 import type { LayoutServerLoad } from './$types';
 
 export const load: LayoutServerLoad = async ({ cookies, request, locals: { getSession } }) => {

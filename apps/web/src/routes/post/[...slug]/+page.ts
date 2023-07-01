@@ -2,7 +2,7 @@ import { getContent } from '$lib/content';
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = async ({ params, setHeaders }) => {
+export const load: PageLoad = async ({ params }) => {
 	const content = await getContent<{
 		title: string;
 		excerpt: string;

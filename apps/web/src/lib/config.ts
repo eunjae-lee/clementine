@@ -10,3 +10,7 @@ export const REDIRECT_SIGNED_IN_USER_TO = '/my-secret-page';
 
 export const BASE_URL = 'https://my-website.com';
 export const POST_URL_PREFIX = `${BASE_URL}/post`;
+
+export const isProtectedRoute = (url: URL) => {
+	return url.pathname.startsWith('/super-secret-path');
+};
