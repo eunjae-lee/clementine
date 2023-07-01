@@ -7,3 +7,5 @@ featured: true
 ---
 
 I cannot believe it's been already a year. I joined Algolia on 4th March 2019. I already ...
+
+## test h2
