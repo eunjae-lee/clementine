@@ -2,7 +2,7 @@
 	export let data;
 </script>
 
-<h1>English Posts</h1>
+<h1>List of English Posts</h1>
 
 <ul>
 	{#each data.contents as content}

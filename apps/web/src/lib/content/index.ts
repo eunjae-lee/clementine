@@ -45,12 +45,15 @@ export const getContents = async <Metadata = unknown>({
 
 export const getContent = async <Metadata = unknown>(slug: string) => {
 	const filePath = getFilePathFromSlug(slug);
-	const mod = await import(filePath);
-
-	return {
-		filePath,
-		slug,
-		metadata: mod.metadata as Metadata,
-		component: mod.default as ConstructorOfATypedSvelteComponent,
-	};
+	try {
+		const mod = await import(filePath);
+		return {
+			filePath,
+			slug,
+			metadata: mod.metadata as Metadata,
+			component: mod.default as ConstructorOfATypedSvelteComponent,
+		};
+	} catch (_err) {
+		return null;
+	}
 };

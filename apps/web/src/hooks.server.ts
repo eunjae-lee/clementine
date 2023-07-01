@@ -8,6 +8,7 @@ import { dev } from '$app/environment';
 import { createSupabaseServerClient } from '@supabase/auth-helpers-sveltekit';
 import { redirect, type Handle, type HandleServerError } from '@sveltejs/kit';
 import { DEFAULT_LANG, SIGN_IN_PATH } from '$lib/const';
+import { sequence } from '@sveltejs/kit/hooks';
 
 if (!dev && PUBLIC_SENTRY_DSN) {
 	SentryNode.init({
@@ -24,7 +25,7 @@ const isProtectedRoute = (url: URL) => {
 	return url.pathname.startsWith('/super-secret-path');
 };
 
-export const handle: Handle = async ({ event, resolve }) => {
+const handleSupabase: Handle = async ({ event, resolve }) => {
 	event.locals.supabase = createSupabaseServerClient({
 		supabaseUrl: PUBLIC_SUPABASE_URL,
 		supabaseKey: PUBLIC_SUPABASE_ANON_KEY,
@@ -43,6 +44,10 @@ export const handle: Handle = async ({ event, resolve }) => {
 		return session;
 	};
 
+	return resolve(event);
+};
+
+const handleProtectedRoute: Handle = async ({ event, resolve }) => {
 	// protect requests to all routes that start with /protected-routes
 	if (isProtectedRoute(event.url)) {
 		const session = await event.locals.getSession();
@@ -51,21 +56,19 @@ export const handle: Handle = async ({ event, resolve }) => {
 			throw redirect(303, SIGN_IN_PATH);
 		}
 	}
+	return resolve(event);
+};
 
+const handleLanguage: Handle = async ({ event, resolve }) => {
 	return resolve(event, {
 		transformPageChunk(input) {
-			return input.html.replace('%lang%', DEFAULT_LANG);
-		},
-		/**
-		 * There´s an issue with `filterSerializedResponseHeaders` not working when using `sequence`
-		 *
-		 * https://github.com/sveltejs/kit/issues/8061
-		 */
-		filterSerializedResponseHeaders(name) {
-			return name === 'content-range';
+			console.log('💡 transformPageChunk');
+			return input.html.replace('%lang%', event.cookies.get('lang') || DEFAULT_LANG);
 		},
 	});
 };
+
+export const handle = sequence(handleSupabase, handleProtectedRoute, handleLanguage);
 
 export const handleError = (({ error, event }) => {
 	if (!dev && PUBLIC_SENTRY_DSN) {
