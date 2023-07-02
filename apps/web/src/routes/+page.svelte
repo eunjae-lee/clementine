@@ -2,7 +2,6 @@
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 	import { MetaTags, type MetaTagsProps } from 'svelte-meta-tags';
 	import type { PageData } from './$types';
-	import { Globe, Twitter, Youtube } from 'lucide-svelte';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { redirect } from '@sveltejs/kit';

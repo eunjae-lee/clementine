@@ -3,7 +3,7 @@
 	import type { PageData } from './$types';
 	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
 	import Logo from '$lib/components/Logo.svelte';
-	import { SIGN_IN_PATH } from '$lib/config';
+	import { APP_NAME, SIGN_IN_PATH } from '$lib/config';
 
 	export let data: PageData;
 
@@ -27,7 +27,7 @@
 	}
 </script>
 
-<MetaTags title="Sign Up | Croissant" />
+<MetaTags title={`Sign Up | ${APP_NAME}`} />
 
 <AppShell>
 	<svelte:fragment slot="header">
