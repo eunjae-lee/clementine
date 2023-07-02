@@ -58,7 +58,10 @@ const handleProtectedRoute: Handle = async ({ event, resolve }) => {
 const handleLanguage: Handle = async ({ event, resolve }) => {
 	return resolve(event, {
 		transformPageChunk({ html }) {
-			return html.replace('%lang%', event.cookies.get('lang') || DEFAULT_LANG);
+			return html.replace(
+				'%lang%',
+				event.locals.contentLanguage || event.cookies.get('preferred-language') || DEFAULT_LANG
+			);
 		},
 	});
 };

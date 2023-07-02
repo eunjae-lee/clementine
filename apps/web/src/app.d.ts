@@ -7,6 +7,7 @@ import { Database } from '$lib/types';
 declare global {
 	namespace App {
 		interface Locals {
+			contentLanguage?: string;
 			supabase: SupabaseClient<Database>;
 			getSession(): Promise<Session | null>;
 		}

@@ -72,4 +72,6 @@
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
+
+	<a href="/post/ko/algolia-1yr">algolia 1yr ko</a>
 </AppShell>
