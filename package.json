@@ -6,6 +6,7 @@
 		"packages/*"
 	],
 	"scripts": {
-		"dev": "yarn workspace web dev"
+		"dev": "yarn workspace web dev",
+		"og": "yarn workspace og dev"
 	}
 }
