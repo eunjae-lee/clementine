@@ -22,5 +22,7 @@
 	});
 </script>
 
-<slot />
-<Toast />
+<div class="container mx-auto py-4 sm:py-8">
+	<slot />
+	<Toast />
+</div>

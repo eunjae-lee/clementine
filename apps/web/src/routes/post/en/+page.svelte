@@ -2,10 +2,12 @@
 	export let data;
 </script>
 
-<h1>List of English Posts</h1>
+<div class="prose">
+	<h1>List of English Posts</h1>
 
-<ul>
-	{#each data.contents as content}
-		<li>{content.metadata.title}</li>
-	{/each}
-</ul>
+	<ul>
+		{#each data.contents as content}
+			<li><a href={content.slug}>{content.metadata.title}</a></li>
+		{/each}
+	</ul>
+</div>
