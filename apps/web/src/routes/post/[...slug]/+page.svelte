@@ -12,5 +12,6 @@
 </script>
 
 <article class="prose prose-neutral">
+	<h1>{data.metadata.title}</h1>
 	<svelte:component this={data.component} />
 </article>

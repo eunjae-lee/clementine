@@ -8,6 +8,18 @@
 	// Finally, your application's global stylesheet (sometimes labeled 'app.css')
 	import '../app.postcss';
 	import { Toast } from '@skeletonlabs/skeleton';
+
+	import progress from 'nprogress';
+	import 'nprogress/nprogress.css';
+	import { beforeNavigate, afterNavigate } from '$app/navigation';
+
+	beforeNavigate(() => {
+		progress.start();
+	});
+
+	afterNavigate(() => {
+		progress.done();
+	});
 </script>
 
 <slot />
