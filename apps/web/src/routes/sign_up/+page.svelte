@@ -2,7 +2,6 @@
 	import { MetaTags } from 'svelte-meta-tags';
 	import type { PageData } from './$types';
 	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
-	import Logo from '$lib/components/Logo.svelte';
 	import { APP_NAME, SIGN_IN_PATH } from '$lib/config';
 
 	export let data: PageData;
@@ -33,7 +32,7 @@
 	<svelte:fragment slot="header">
 		<AppBar background="bg-surface-200"
 			><svelte:fragment slot="lead">
-				<a href="/"><Logo /></a>
+				<a href="/">Logo</a>
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>

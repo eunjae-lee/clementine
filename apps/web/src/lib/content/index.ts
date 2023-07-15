@@ -1,6 +1,6 @@
 type GetContentsParams = {
 	slugStartsWith?: string;
-	includeComponent?: boolean;
+	metadataOnly?: boolean;
 };
 
 const getSlugFromFilePath = (filePath: string) => {
@@ -23,7 +23,7 @@ function filterNonNull<T>(arr: (T | null | undefined)[]): T[] {
 
 export const getContents = async <Metadata = unknown>({
 	slugStartsWith,
-	includeComponent = true,
+	metadataOnly,
 }: GetContentsParams = {}) => {
 	const contents = await Promise.all(
 		Object.entries(getContentMap<Metadata>()).map(async (entry) => {
@@ -42,7 +42,7 @@ export const getContents = async <Metadata = unknown>({
 				filePath,
 				slug,
 				metadata: resolved.metadata,
-				component: includeComponent ? resolved.default : undefined,
+				component: metadataOnly ? undefined : resolved.default,
 			};
 		})
 	);

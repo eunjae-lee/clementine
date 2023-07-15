@@ -8,17 +8,15 @@ export async function GET({ url }) {
 	const slug = url.searchParams.get('slug');
 	const xml = String.raw;
 
-	let posts = await getContents<{
+	const posts = await getContents<{
 		title: string;
 		excerpt: string;
 		created_at: string;
 		lang: string;
 		featured: boolean;
-	}>();
-
-	if (slug) {
-		posts = posts.filter((post) => post.slug.startsWith(slug));
-	}
+	}>({
+		...(typeof slug === 'string' && slug.length > 0 ? { slugStartsWith: slug } : {}),
+	});
 
 	const body = xml`
   <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">

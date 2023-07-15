@@ -10,7 +10,7 @@ export const load: PageServerLoad = async () => {
 		featured: boolean;
 	}>({
 		slugStartsWith: 'en/',
-		includeComponent: false,
+		metadataOnly: true,
 	});
 
 	return {

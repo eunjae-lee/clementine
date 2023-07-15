@@ -53,18 +53,18 @@
 
 	<div class="mt-8 space-y-8">
 		<div>
-			<a href="/post/en">This is a link to the list of English articles</a>
+			<a href="/post/en">This is a link to the list of English posts</a>
 		</div>
 
 		<div>
-			<p>The following is a sample article written in English.</p>
+			<p>The following is a sample post written in English.</p>
 			<a href="/post/en/svelte"
 				>Building Dynamic Web Apps with Svelte: The Future of Front-End Development</a
 			>
 		</div>
 
 		<div>
-			<p>The following is a sample article written in Korean.</p>
+			<p>The following is a sample post written in Korean.</p>
 			<a href="/post/ko/svelte">SvelteKit: 다음 세대의 프론트엔드 프레임워크</a>
 		</div>
 	</div>
