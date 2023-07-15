@@ -12,6 +12,10 @@ export default defineConfig({
 			{ text: 'Features', link: '/styling' },
 		],
 
+		footer: {
+			copyright: 'Copyright © 2023-present <a href="https://twitter.com/eunjae_lee">Eunjae Lee</a>',
+		},
+
 		sidebar: [
 			{ text: 'Getting Started', link: '/getting-started' },
 			{
